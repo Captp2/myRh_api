@@ -17,6 +17,10 @@
   end
 
   def index
-    render json:  session[:user_id]
+    if logged_in?
+      render json:  User.all
+    else
+      render json: request.headers[:ID]
+    end
   end
 end
