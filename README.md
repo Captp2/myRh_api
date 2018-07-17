@@ -1,24 +1,12 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Auth :
 
-Things you may want to cover:
+/login, send email and password
 
-* Ruby version
+API returns User model with token
 
-* System dependencies
+For authenticated endpoint you need to set the following headers :
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* token : the token returned by the API
+* ID : the user ID
