@@ -1,48 +1,21 @@
 class ApplicationController < ActionController::API
-    protect_from_forgery with: :null_session
+	def current_user
+		@current_user ||= User.find(session[:user_id]) if session[:user_id]
+	end
+	helper_method :current_user
+	before_action :verify_logged_in
 
-    before_action :authenticate
-    attr_accessor :current_user
+	def verify_logged_in
+		# render json: session
+		# if !session[:user_id]
+		# 	response.set_header('role', 'guest')
+		# else
+		# 	@current_user ||= User.find(session[:user_id]) if session[:user_id]
+		# 	response.set_header('role', 'user')
+		# end
+	end
 
-    def logged_in?
-      set_current_user
-      !!@current_user
-    end
-
-    def current_user
-      @current_user
-    end
-
-    def set_current_user
-      if has_valid_auth_type?
-        user = User.find_by(auth_token: auth_secret[:auth_token])
-        if user
-          @current_user = user
-        end
-      end
-    end
-
-    def authenticate
-      unless logged_in?
-        render json: {
-            success: false,
-            error: 'Invalid credentials'
-        }, status: :unauthorized
-      end
-    end
-
-    private
-
-      def auth_header
-        request.headers['Authorization'].to_s.scan(/Bearer (.*)$/).flatten.last
-      end
-
-      def has_valid_auth_type?
-        !!request.headers['Authorization'].to_s.scan(/Bearer/).flatten.first
-      end
-
-      def auth_secret
-        Auth.decode(auth_header) || {}
-      end
-  end
+	def authorize
+		redirect_to '/login' unless current_user
+	end
 end
