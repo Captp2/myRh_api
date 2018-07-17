@@ -1,0 +1,15 @@
+current directory: /home/bdcmarley/Documents/Project/myRh_api/vendor/cache/ruby/2.3.0/gems/websocket-driver-0.7.0/ext/websocket-driver
+/usr/bin/ruby2.3 -r ./siteconf20180717-16319-1ofgwgf.rb extconf.rb
+creating Makefile
+
+current directory: /home/bdcmarley/Documents/Project/myRh_api/vendor/cache/ruby/2.3.0/gems/websocket-driver-0.7.0/ext/websocket-driver
+make "DESTDIR=" clean
+
+current directory: /home/bdcmarley/Documents/Project/myRh_api/vendor/cache/ruby/2.3.0/gems/websocket-driver-0.7.0/ext/websocket-driver
+make "DESTDIR="
+compiling websocket_mask.c
+linking shared-object websocket_mask.so
+
+current directory: /home/bdcmarley/Documents/Project/myRh_api/vendor/cache/ruby/2.3.0/gems/websocket-driver-0.7.0/ext/websocket-driver
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 websocket_mask.so ./.gem.20180717-16319-174ba7k
