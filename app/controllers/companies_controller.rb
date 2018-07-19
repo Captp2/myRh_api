@@ -1,4 +1,5 @@
 class CompaniesController < ApplicationController
+  ##skip_before_filter :verify_authenticity_token, :only => :create
   before_action :set_company, only: [:show, :edit, :update, :destroy]
 
   # GET /companies
