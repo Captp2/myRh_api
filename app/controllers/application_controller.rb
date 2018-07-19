@@ -10,6 +10,10 @@ class ApplicationController < ActionController::API
 		current_user != nil
 	end
 
+	def allow_options
+		head(:ok)
+	end
+
 	def verify_logged_in
 		if logged_in?
 			response.set_header('role', 'user')
@@ -19,7 +23,7 @@ class ApplicationController < ActionController::API
 	end
 
 	helper_method :current_user, :logged_in
-	after_action :verify_logged_in
+	after_action :verify_logged_in, :allow_options
 
 	def authorize
 		redirect_to '/login' unless current_user
