@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :results
+  resources :answers
+  resources :questions
+  resources :quizzes
       post '/login' => 'sessions#create'
       get '/logout' => 'sessions#destroy'
       post '/users' => 'users#create'
