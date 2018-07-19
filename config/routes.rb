@@ -5,8 +5,9 @@ Rails.application.routes.draw do
   resources :quizzes
       post '/login' => 'sessions#create'
       get '/logout' => 'sessions#destroy'
-
       post '/users' => 'users#create'
+
+      match '*all' => "application#allow_options", via: :options, :constraints => { :all => /.*/ }
       resources :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
