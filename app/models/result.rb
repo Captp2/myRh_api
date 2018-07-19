@@ -1,5 +1,5 @@
 class Result < ApplicationRecord
-  belongsTo     :user, dependent: :destroy
-  belongsTo     :question, dependent: :destroy
-  belongsTo     :answer, dependent: :destroy
+  belongs_to     :user, dependent: :destroy
+  belongs_to     :question, dependent: :destroy
+  belongs_to     :answer, dependent: :destroy
 end

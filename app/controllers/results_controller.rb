@@ -5,6 +5,11 @@ class ResultsController < ApplicationController
   # GET /results.json
   def index
     @results = Result.all
+    if @results != nil
+      render json: @results
+    else
+      render json: {}
+    end
   end
 
   # GET /results/1
@@ -43,7 +48,11 @@ class ResultsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_result
-      @result = Result.find(params[:id])
+      begin
+        render json: @result = Result.find(params[:id])
+      rescue ActiveRecord::RecordNotFound => e
+        render json: {}
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

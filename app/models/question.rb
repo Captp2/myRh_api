@@ -1,4 +1,4 @@
 class Question < ApplicationRecord
-  belongsTo   :quiz, dependent: :destroy
-  hasMany     :answer
+  belongs_to   :quiz, dependent: :destroy
+  has_many     :answer
 end

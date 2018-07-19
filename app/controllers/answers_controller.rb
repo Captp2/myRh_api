@@ -5,6 +5,11 @@ class AnswersController < ApplicationController
   # GET /answers.json
   def index
     @answers = Answer.all
+    if @answers != nil
+      render json: @answers
+    else
+      render json: {}
+    end
   end
 
   # GET /answers/1
@@ -43,7 +48,11 @@ class AnswersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_answer
-      @answer = Answer.find(params[:id])
+      begin
+        render json: @answer = Answer.find(params[:id])
+      rescue ActiveRecord::RecordNotFound => e
+        render json: {}
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

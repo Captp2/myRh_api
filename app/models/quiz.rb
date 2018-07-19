@@ -1,6 +1,6 @@
 class Quiz < ApplicationRecord
-  belongsTo   :offer, dependent: :destroy
-  hasMany     :questions
-  hasMany     :answer
-  hasMany     :results
+  belongs_to   :offer, dependent: :destroy
+  has_many     :questions
+  has_many     :answer
+  has_many     :results
 end
