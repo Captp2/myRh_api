@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::API
+	include ActionController::MimeResponds
+	
 	def current_user
 		user ||= User.find(request.headers[:ID]) if request.headers[:ID]
 		if(user && user.token === request.headers[:token])
