@@ -7,11 +7,11 @@ class ApplicationController < ActionController::API
 	end
 
 	def logged_in?
-		current_user != nil
+		current_user != nil && current_user.role == 1
 	end
 
 	def allow_options
-		head(:ok)
+		head(:ok) if request.request_method == "OPTIONS"
 	end
 
 	def verify_logged_in

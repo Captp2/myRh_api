@@ -17,5 +17,15 @@ module Myapp
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
-  end
+    config.action_mailer.smtp_settings = {
+      :tls => true ,
+      :enable_starttls_auto => true ,
+      :authentication => :login ,
+      :address => "smtp.gmail.com" ,
+      :port => 587 ,
+      :domain => "smtp.gmail.com" ,
+      :user_name => "axelgaudot@gmail.com" ,
+      :password => ""
+  }
+end
 end
