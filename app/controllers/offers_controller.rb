@@ -15,27 +15,26 @@ class OffersController < ApplicationController
   # GET /offers/1
   # GET /offers/1.json
   def show
+    render json: Offer.find(params[:id])
   end
 
   # POST /offers
   # POST /offers.json
   def create
-    # head :ok
     @offer = Offer.new(offer_params)
 
-    # if @offer.save
-    #   render json: @offer
-    # else
-    #   render json: @offer.errors, status: :unprocessable_entity
-    # end
-    # render json: offer_params
+    if @offer.save
+      render json: @offer
+    else
+      render json: @offer.errors, status: :unprocessable_entity
+    end
   end
 
   # PATCH/PUT /offers/1
   # PATCH/PUT /offers/1.json
   def update
     if @offer.update(offer_params)
-      render :show, status: :ok, location: @offer
+      render json: @offer
     else
       render json: @offer.errors, status: :unprocessable_entity
     end
@@ -50,7 +49,6 @@ class OffersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_offer
-
       begin
         @offer = Offer.find(params[:id])
         # my_record = Record.find params[:id]
