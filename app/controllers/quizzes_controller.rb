@@ -8,7 +8,7 @@ class QuizzesController < ApplicationController
     if @quizzes != nil
       render json: @quizzes
     else
-      render json: {}
+      render json: {"data": "nothing"}
     end
   end
 
@@ -23,7 +23,7 @@ class QuizzesController < ApplicationController
     @quiz = Quiz.new(quiz_params)
 
     if @quiz.save
-      render :show, status: :created, location: @quiz
+      render json: @quiz
     else
       render json: @quiz.errors, status: :unprocessable_entity
     end
