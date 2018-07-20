@@ -6,16 +6,21 @@ class CompaniesController < ApplicationController
   # GET /companies.json
   def index
     @companies = Company.all
+    render json: @companies
   end
 
   # GET /companies/1
   # GET /companies/1.json
   def show
+    #render json: companies
+    @company = Company.one
+    render json: @company
   end
 
   # GET /companies/new
   def new
     @company = Company.new
+    render json: @company
   end
 
   # GET /companies/1/edit
@@ -26,6 +31,7 @@ class CompaniesController < ApplicationController
   # POST /companies.json
   def create
     @company = Company.new(company_params)
+    render json: @company
 
     respond_to do |format|
       if @company.save
@@ -66,8 +72,8 @@ class CompaniesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_company
       @company = Company.find(params[:id])
+      render json: @company
     end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def company_params
       params.require(:company).permit(:name, :city)
