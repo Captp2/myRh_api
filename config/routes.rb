@@ -6,5 +6,6 @@ Rails.application.routes.draw do
 
       match '*all' => "application#allow_options", via: :options, :constraints => { :all => /.*/ }
       resources :users
+  resources :companies
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

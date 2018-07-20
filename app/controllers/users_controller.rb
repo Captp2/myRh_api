@@ -5,7 +5,7 @@
     private def user_params
      params.permit(:first_name, :last_name, :email, :password, :password_confirmation)
    end
-
+ 
    private def token_params
     params.require(:activation_token)
   end
