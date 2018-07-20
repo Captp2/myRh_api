@@ -22,12 +22,12 @@ ActiveRecord::Schema.define(version: 2018_07_18_145538) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "offer_tables", force: :cascade do |t|
-    t.string "label"
-    t.datetime "begin"
-    t.datetime "end"
-    t.string "last_name"
-    t.string "token"
+  create_table "offers", force: :cascade do |t|
+    t.string "title"
+    t.string "content"
+    t.integer "company_id"
+    t.string "place"
+    t.string "job"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
